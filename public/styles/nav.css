@@ -1,0 +1,30 @@
+nav {
+  background: #4056A1;
+  height: 120px;
+  color: #FFFF;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-nav1 {
+  font-family:'Bungee', sans-serif;
+  margin: 1.5em;
+  font-size: 40px
+  
+}
+
+.text-nav2 {
+  font-family:'Source Sans Pro', sans-serif;
+  margin: 1.5em;
+  font-size: 20px;  
+}
+
+div {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  margin-top: 3px;
+}
+
