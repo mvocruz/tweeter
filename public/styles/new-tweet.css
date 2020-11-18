@@ -14,7 +14,8 @@
   border: none;
   border-bottom: 4px solid #545149;
   background-color: #f4f1ec;
-  height: auto;
+  height: auto
+  ;
 }
 
 .tweet-button {
