@@ -42,29 +42,32 @@ $(document).ready(function() {
     return $tweet;
     };
 
-  // const createNewTweet = function(data) {
-  //   console.log(data)
-  //   $.ajax({url: "/tweets", type: "POST", data: {"text": data}, sucess: () => {
-     
-  //   }})
-  // }
-
-
+  
+  
+  
+  
   $('form').submit(function(event) {
     event.preventDefault();
-    const text = $(this).serialize()
-    // console.log("this is the text", text) // returns empty for text
-    // createNewTweet(text);
-  })
+    const text = $("#tweet-text").val()
+      if (!text) {
+        return alert('try again')
+      } else if (text.length > 140) {
+        return alert("try again")
+      } else {
+        $.ajax({url: "/tweets", method: "POST", data: $("#tweet-text").serialize()})
+        .then(() => {
+          console.log($("#tweet-text").serialize())
+        })
+      }
+    });
   
 
   const loadTweets = function() {
     $.ajax("/tweets", {method: "GET"})
     .then(function(res) {
-      console.log(res)
       renderTweets(res);
     })
-  }
+  };
 
   loadTweets()
 });
