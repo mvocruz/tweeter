@@ -14,6 +14,11 @@ $(document).ready(function() {
   };
   
   const createTweetElement = function(data) {
+    const escape =  function(str) {
+      let div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    }
     
     const user = data.user;
     const message = data.content;
@@ -23,7 +28,8 @@ $(document).ready(function() {
     const $handle = $(`<div class="user-handle">${user.handle}</div>`);
     const $divHeader = $(`<div class="tweet-avatar"></div>`);
     $divHeader.append($avatar).append($name);
-    const $tweetText = $(`<p name="text" class="tweet-content" >${message.text}</p>`);
+    const safeHTML = `<p name="text" class="tweet-content">${escape(message.text)}</p>`;
+    // const $tweetText = $(`<p name="text" class="tweet-content" >${safeHTML}</p>`);
     const $divFooter = $(`<div class="interaction-buttons">
     <button style="color:#4056A1; border:none; font-size: 15px;" class="flag-button" type="submit"><i class="fas fa-flag"></i></button>
     <button style="color:#4056A1; border:none; font-size: 15px;" class="retweet-button" type="submit"><i class="fas fa-retweet"></i></button>
@@ -33,7 +39,7 @@ $(document).ready(function() {
     const $tweetHeader = $(`<header class="header-tweets-list"></header>`);
     $tweetHeader.append($divHeader).append($handle);
     const $tweetBody = $(`<div class="div-tweets-list"></div>`);
-    $tweetBody.append($tweetText);  
+    $tweetBody.append(safeHTML);  
     const $tweetFooter = $(`<footer class="footer-tweets-list"></footer>`);
     $tweetFooter.append($divFooter).append($tweetDate);
     const $tweet = $(`<article class="article-tweets-list"></article>`);
