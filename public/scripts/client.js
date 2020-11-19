@@ -49,12 +49,15 @@ $(document).ready(function() {
     };
 
   $('form').submit(function(event) {
+    $(".error-line").slideUp();
     event.preventDefault();
     const text = $("#tweet-text").val();
       if (!text) {
-        return alert('It seems that the tweet is empty. Please type a message and submit again!');
+        $(".error-line p").text('⚠︎  It seems that the tweet is empty. Please type a message and submit again!  ⚠︎');
+        $(".error-line").slideDown();
       } else if (text.length > 140) {
-        return alert("Your tweet is above the characters limit. Please remove some characters and submit again!");
+        $(".error-line p").text("⚠︎  Your tweet is above the characters limit. Please remove some characters and submit again!  ⚠︎");
+        $(".error-line").slideDown();
       } else {
         $.ajax({url: "/tweets", method: "POST", data: $("#tweet-text").serialize()})
          .then(() => {
