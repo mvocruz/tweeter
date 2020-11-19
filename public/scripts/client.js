@@ -9,7 +9,7 @@ $(document).ready(function() {
   const renderTweets = function(tweets) {
     for (let tweet of tweets) {
       let newTweet = createTweetElement(tweet);
-        $('.section-tweets-list').append(newTweet);
+        $('.section-tweets-list').prepend(newTweet);
     }
   };
   
@@ -42,21 +42,24 @@ $(document).ready(function() {
     return $tweet;
     };
 
-  
-  
-  
-  
   $('form').submit(function(event) {
     event.preventDefault();
-    const text = $("#tweet-text").val()
+    const text = $("#tweet-text").val();
       if (!text) {
-        return alert('try again')
+        return alert('It seems that the tweet is empty. Please type a message and submit again!');
       } else if (text.length > 140) {
-        return alert("try again")
+        return alert("Your tweet is above the characters limit. Please remove some characters and submit again!");
       } else {
         $.ajax({url: "/tweets", method: "POST", data: $("#tweet-text").serialize()})
-        .then(() => {
-          console.log($("#tweet-text").serialize())
+         .then(() => {
+          $("#tweet-text").val('');
+          $.ajax("/tweets",{method: "GET"})
+            .then(data => {
+              renderTweets([data[data.length - 1]]);
+          })
+          .catch(error => {
+            console.log(error);
+          })
         })
       }
     });
@@ -67,7 +70,11 @@ $(document).ready(function() {
     .then(function(res) {
       renderTweets(res);
     })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
-  loadTweets()
+  loadTweets();
+
 });
