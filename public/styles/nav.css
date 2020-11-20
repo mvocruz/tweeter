@@ -1,5 +1,5 @@
 nav {
-  background: #4056A1;
+  background: #e0a100;;
   height: 120px;
   color: #FFFF;
   width: 100%;
@@ -13,14 +13,14 @@ nav {
 
 .text-nav1 {
   font-family:'Bungee', sans-serif;
-  margin: 1.5em;
+  margin: 30px;
   font-size: 40px
   
 }
 
 .text-nav2 {
   font-family:'Source Sans Pro', sans-serif;
-  margin: 1.5em;
+  margin: 30px;
   font-size: 20px;  
 }
 
@@ -31,3 +31,9 @@ div {
   margin-top: 3px;
 }
 
+@media only screen and (min-width: 1024px) {
+
+  nav {
+    background: #4056A1;
+  }
+ }

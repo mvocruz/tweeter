@@ -31,3 +31,14 @@
   margin-top: 20px;
   align-self: center;
 }
+
+@media only screen and (min-width: 1024px) {
+
+  .page-principal {
+    margin-top: 180px;
+    margin-left: 10px;
+    margin-right: 30px;
+    height: 350px;
+    width: fit-content;
+  }
+ }

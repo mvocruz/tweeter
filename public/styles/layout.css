@@ -22,7 +22,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 4em;
+  margin-bottom: 4e
+  
 }
 
 
@@ -34,4 +35,12 @@ body {
    width: 90%;
    display: flex;
    align-self: center;
+ }
+
+ @media only screen and (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
  }

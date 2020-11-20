@@ -15,10 +15,10 @@ $(document).ready(function() {
 
     if (charsLeft < 0) {
       $counter.css('color', 'red');
-      $counter.text(charsLeft)
+      $counter.text(charsLeft);
     } else {
       $counter.css('color', '#545149');
-    $counter.text(charsLeft)
+      $counter.text(charsLeft);
     };
   })
 
